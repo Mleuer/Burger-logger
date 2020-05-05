@@ -1,5 +1,15 @@
 var connection = require("./connection.js");
 
+function printQuestionMarks(num) {
+  var arr = [];
+
+  for (var i = 0; i < num; i++) {
+    arr.push("?");
+  }
+
+  return arr.toString();
+}
+
 // Object for all our SQL statement functions.
 var orm = {
   selectAll: function(tableInput, cb) {
@@ -8,13 +18,18 @@ var orm = {
       if (err) {
         throw err;
       }
-      console.log(result);
       cb(result);
     });
   },
   insertOne: function(table, cols, vals, cb) {
-    var queryString = "INSERT INTO " + table;
-
+    var queryString = `INSERT INTO ${table}`;
+    queryString += " (";
+    queryString += cols.toString();
+    queryString += ") ";
+    queryString += "VALUES (";
+    queryString += printQuestionMarks(vals.length);
+    queryString += ") ";
+    
     console.log(queryString);
 
     connection.query(queryString, vals, function(err, result) {

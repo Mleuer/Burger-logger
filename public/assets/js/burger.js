@@ -4,7 +4,7 @@ $(function() {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
     
-        var newburger = {
+        let newBurger = {
           burger_name: $("#bur").val().trim(),
           devoured: $("[name=devoured]:checked").val().trim()
         };
