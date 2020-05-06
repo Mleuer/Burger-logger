@@ -1,23 +1,24 @@
 <h2>Burgers to be Devoured</h2>
 <ul>
-    {{#each burgers}}
-        {{#unless devoured}}
-        <li>
-            <h2>{{burger_name}}</h2>
-        </li>
-        {{/unless}}
-    {{/each}}
+  {{#each burgers}}
+  {{#unless devoured}}
+  <li>
+    <h2>{{burger_name}}</h2>
+    <button class="devBtn" type="submit" data-id={{this.id}} data-devour={{this.devoured}}>Devour It</button>
+  </li>
+  {{/unless}}
+  {{/each}}
 </ul>
 <br>
 <h2>Burgers that have been Devoured</h2>
 <ul>
-    {{#each burgers}}
-        {{#if devoured}}
-        <li>
-            <h2>{{burger_name}}</h2>
-        </li>
-        {{/if}}
-    {{/each}}
+  {{#each burgers}}
+  {{#if devoured}}
+  <li>
+    <h2>{{burger_name}}</h2>
+  </li>
+  {{/if}}
+  {{/each}}
 </ul>
 
 <h2>Add a Burger</h2>
